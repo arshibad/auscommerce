@@ -1,7 +1,8 @@
 var page =0;
 var map = null;
-  var markerArray = []; //create a global array to store markers
-  var locations = [];
+var markerArray = []; //create a global array to store markers
+var locations = [];
+var $container = $('#container');
 $(function () {
     var $container = $('#container');
 
@@ -66,7 +67,7 @@ $(function () {
 
     $(function () {
 
-        var $container = $('#container');
+        //var $container = $('#container');
 
         $container.imagesLoaded(function(){
                 $container.isotope({
@@ -126,12 +127,7 @@ $(function () {
               });
       
       
-              // change size of clicked element
-              $container.delegate('.element', 'click', function () {
-                  $('.hover_effect').removeClass('hover_effect');
-                  $(this).children('.clientcontainer').toggleClass('hover_effect');
-                  $container.isotope('reLayout');
-              });
+              
         });  
         
         $container.infinitescroll({
@@ -148,12 +144,19 @@ $(function () {
             function (newElements) {
               $container.append(newElements);
               $container.imagesLoaded(function(){
-                $container.isotope('appended', $(newElements));  
+                $container.isotope('appended', $(newElements));
+                
               });
                 
             }
         );
         
+    });
+    // change size of clicked element
+    $('.element').live('click', function () {
+        $('.hover_effect').removeClass('hover_effect');
+        $(this).children('.clientcontainer').toggleClass('hover_effect');
+        $container.isotope('reLayout');
     });
     
     /*$(window).scroll(function(){
