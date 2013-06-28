@@ -17,11 +17,11 @@ $allitems_str = json_encode($allitems);
 $items_str = json_encode($items);
 $all_category_str = json_encode($all_category);
 $all_prices_str = json_encode($all_prices);
-
+//manifest="application.appcache"
 ?>
 
 <!DOCTYPE html>
-<html manifest="application.appcache">
+<html >
   <head>
     <meta charset="utf-8">
     <title>Auscommerce</title>
@@ -34,6 +34,10 @@ $all_prices_str = json_encode($all_prices);
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 	  
 	 <link href="css/style.css" rel="stylesheet">
+	 
+	 <script src="http://maps.google.com/maps/api/js?sensor=false&.js"></script>
+	 <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
+	 
 	 
 	 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   </head>
@@ -79,7 +83,7 @@ $all_prices_str = json_encode($all_prices);
     <div class="container">
 
       <div class="hero-unit">
-        <h1>GOOGLE MAP WILL BE HERE</h1>
+        <div id="map_canvas"></div>
       </div>
 	  <div class="nav_bar">
 			 <ul class="nav nav-tabs">
@@ -95,36 +99,21 @@ $all_prices_str = json_encode($all_prices);
 	  </div>
       <!-- Example row of columns -->
 		<div align="center">
-			 <div id="container" class="variable-sizes clearfix infinite-scrolling">
-					<?php include("pages.php");?>
-					
+			 
+			 <div id="container" class="row clickable clearfix infinite-scrolling">
+					<ul id="tiles" class="isotope" style="position: relative; overflow: hidden; height: 4592px; width: 1470px;">
+					<?php
+					$loaded = 1;
+					include("pages.php");?>
+					</ul>
 			 </div> <!-- #container -->
-				
 			 <nav id="page_nav">
-					<a href="pages.php?p=2"></a>
-			 </nav>
-		
-			 <div class="row">
-				<div class="span4">
-				  <h2>Heading</h2>
-				  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-				  <p><a class="btn" href="#">View details &raquo;</a></p>
-				</div>
-				<div class="span4">
-				  <h2>Heading</h2>
-				  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-				  <p><a class="btn" href="#">View details &raquo;</a></p>
-			  </div>
-				<div class="span4">
-				  <h2>Heading</h2>
-				  <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-				  <p><a class="btn" href="#">View details &raquo;</a></p>
-				</div>
-			 </div>
+			 <a href="pages.php?page=2"></a>
+		  </nav>
 		</div>
       <hr>
       <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; Auscommerce 2013</p>
       </footer>
 
     </div> <!-- /container -->
@@ -134,6 +123,7 @@ $all_prices_str = json_encode($all_prices);
     <script src="js/bootstrap.min.js"></script>
 	 <script src="js/jquery.isotope.min.js"></script>
 	 <script src="js/jquery.infinitescroll.min.js"></script>
+	 <script type="text/javascript" src="js/jquery.imagesloaded.js"></script>
 	 <script src="js/script.js"></script>
   </body>
 </html>

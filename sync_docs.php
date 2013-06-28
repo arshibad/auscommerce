@@ -1,7 +1,9 @@
 <?php
 include("config.php");
 
-$file = fopen("https://docs.google.com/spreadsheet/pub?key=0AqNDW89YHKGedFJjdmtIYlp6U3lLYmQzZUVQTExjY1E&single=true&gid=0&output=csv","r");
+//$file = fopen("https://docs.google.com/spreadsheet/pub?key=0AqNDW89YHKGedFJjdmtIYlp6U3lLYmQzZUVQTExjY1E&single=true&gid=0&output=csv","r");
+$file = fopen("https://docs.google.com/spreadsheet/pub?key=0AqNDW89YHKGedHY2dFVSSU9NZm4zZGotOVBxT1ZvcHc&single=true&gid=0&&output=csv","r");
+
 //$file = fopen("McEngine_data.csv","r");
 
 
@@ -39,7 +41,7 @@ $all_prices = array();
 
 //echo "<pre>";
 //print_r($products);exit;
-$html1="";
+//$html1="";
 for($i=0;$i<count($products);$i++){
 	  $t1 = 	$products[$i][3];
 	  $t1Arr = @explode("/",$t1);
@@ -54,18 +56,18 @@ for($i=0;$i<count($products);$i++){
 	$productArr['id']= $i+1;//$products[$i][12];
 	$productArr['name']= $products[$i][0];
 	$productArr['category']= $products[$i][4];
-	$productArr['price']= "0.00";
+	$productArr['price']= $products[$i][5];//"0.00";
 	$productArr['shortdescription']= $products[$i][1];
 	$productArr['longdescription']= $products[$i][2];
 	$productArr['productname']= $products[$i][0];
 	$productArr['dateadded']= $products[$i][3];
-	$productArr['url']= $products[$i][5];
+	$productArr['url']= $products[$i][6];
 	$productArr['compaddress']= $products[$i][6];
 	$productArr['gmapaddress']= $products[$i][7];
 	$productArr['date_establish']= $products[$i][8];
 	$productArr['contact_email']= $products[$i][9];
-	$productArr['small_image']= $products[$i][10];
-	$productArr['large_image']= $products[$i][11];
+	$productArr['small_image']= $products[$i][9];
+	$productArr['large_image']= $products[$i][10];
 	$productArr['addedBy']= $products[$i][12];
 	$productArr['qty']= $products[$i][13];
 	
